@@ -9,12 +9,20 @@
     }
 </script>
 <script type="module">
-    //import {basicSetup, EditorView} from "codemirror"
-    const {basicSetup, EditorView} = await import("codemirror")
+    import {basicSetup, EditorView} from "codemirror"
     import {javascript} from "@codemirror/lang-javascript"
 
-    let editor = new EditorView({
-        extensions: [basicSetup, javascript()],
-        parent: document.body
+    const editor = new EditorView({
+        extensions: [
+            basicSetup,
+            javascript(),
+            EditorView.theme({
+              "&": {
+                color: "white",
+                backgroundColor: "black"
+              }
+            }, {dark: true})
+        ],
+        parent: document.body,
     })
 </script>
