@@ -1,28 +1,54 @@
 <!DOCTYPE html>
-<script type="importmap">
-    {
-        "imports": {
-            "codemirror": "https://esm.sh/v132/codemirror@6.0.1",
-            "@codemirror/lang-javascript": "https://esm.sh/v132/@codemirror/lang-javascript@6.2.1",
-            "@codemirror/view": "https://esm.sh/v132/@codemirror/view@6.19.0"
-        }
-    }
-</script>
-<script type="module">
-    import {basicSetup, EditorView} from "codemirror"
-    import {javascript} from "@codemirror/lang-javascript"
-
-    const editor = new EditorView({
-        extensions: [
-            basicSetup,
-            javascript(),
-            EditorView.theme({
-              "&": {
-                color: "white",
-                backgroundColor: "black"
-              }
-            }, {dark: true})
-        ],
-        parent: document.body,
-    })
-</script>
+<html lang="en">
+    <head>
+        <script type="importmap">
+            {
+                "imports": {
+                "@codemirror/commands": "https://esm.sh/v132/*@codemirror/commands@6.2.5",
+                "@codemirror/view": "https://esm.sh/v132/*@codemirror/view@6.19.0",
+                "codemirror": "https://esm.sh/v132/*codemirror@6.0.1"
+                },
+                "scopes": {
+                "https://esm.sh/v132/": {
+                    "@codemirror/autocomplete": "https://esm.sh/v132/@codemirror/autocomplete@6.9.1",
+                    "@codemirror/language": "https://esm.sh/v132/@codemirror/language@6.9.0",
+                    "@codemirror/lint": "https://esm.sh/v132/@codemirror/lint@6.4.2",
+                    "@codemirror/search": "https://esm.sh/v132/@codemirror/search@6.5.3",
+                    "@codemirror/state": "https://esm.sh/v132/@codemirror/state@6.2.1",
+                    "@lezer/common": "https://esm.sh/v132/@lezer/common@1.1.0",
+                    "style-mod": "https://esm.sh/v132/style-mod@4.1.0",
+                    "w3c-keyname": "https://esm.sh/v132/w3c-keyname@2.2.8"
+                }
+                }
+            }
+        </script>
+        <script type="module">
+            import { basicSetup } from "codemirror"
+            import { EditorView, keymap } from "@codemirror/view"
+            import { indentWithTab } from "@codemirror/commands"
+        
+            const editor = new EditorView({
+                extensions: [
+                    basicSetup,
+                    keymap.of([indentWithTab]),
+                    EditorView.theme({
+                    "&": {
+                        color: "white",
+                        backgroundColor: "black",
+                    },
+                    "&.cm-focused .cm-cursor": {
+                        borderLeftColor: "white"
+                    },
+                    }, {dark: true})
+                ],
+                parent: document.querySelector("editor"),
+            })
+        </script>
+        <script src="https://unpkg.com/adorable-css@1.4.3"></script>
+    </head>
+    <body>
+        <editor class="font(16)">
+            <!-- CodeMirror Inject -->
+        </editor>
+    </body>
+</html>
