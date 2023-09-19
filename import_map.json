@@ -2,7 +2,8 @@
   "imports": {
     "@codemirror/commands": "https://esm.sh/v132/*@codemirror/commands@6.2.5",
     "@codemirror/view": "https://esm.sh/v132/*@codemirror/view@6.19.0",
-    "codemirror": "https://esm.sh/v132/*codemirror@6.0.1"
+    "codemirror": "https://esm.sh/v132/*codemirror@6.0.1",
+    "css-paint-polyfill": "https://esm.sh/v132/css-paint-polyfill@3.4.0"
   },
   "scopes": {
     "https://esm.sh/v132/": {
