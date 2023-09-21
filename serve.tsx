@@ -6,7 +6,11 @@ app.use(async ctx => {
     console.log(ctx.request.url.pathname)
     const { Editor } = await import("./Editor.tsx?"+Math.random())
     ctx.response.headers.set("Content-Type", "text/html")
-    ctx.response.body = Editor()
+    ctx.response.body =
+        "<!doctype html>\n" +
+        <html>
+            <Editor/>
+        </html>
 })
 
 console.log("http://localhost:8000")
