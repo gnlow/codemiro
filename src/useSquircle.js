@@ -3,5 +3,5 @@ if (!("paintWorklet" in CSS)) {
 }
 
 CSS.paintWorklet.addModule(
-    `https://www.unpkg.com/css-houdini-squircle/squircle.min.js`
+    `https://www.unpkg.com/css-houdini-squircle@0.3.0/squircle.min.js`
 )
